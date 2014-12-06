@@ -1,0 +1,48 @@
+{
+  "name": "helper-date",
+  "description": "Format dates with date.js and moment.js. Should work with any Handlebars, Lo-Dash, underscore, or any template engine that allows helper functions to be registered. Also compatible with verb, assemble and Template.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/helpers/helper-date",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/helpers/helper-date.git"
+  },
+  "bugs": {
+    "url": "https://github.com/helpers/helper-date/issues"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/helpers/helper-date/blob/master/LICENSE-MIT"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "dependencies": {
+    "date.js": "^0.2.0",
+    "kind-of": "^0.1.2",
+    "moment": "^2.8.4"
+  },
+  "devDependencies": {
+    "handlebars": "^2.0.0",
+    "lodash": "^2.4.1",
+    "should": "^4.2.1"
+  },
+  "keywords": [
+    "assemble",
+    "handlebars",
+    "helper",
+    "lo-dash",
+    "lodash",
+    "template",
+    "underscore",
+    "verb"
+  ]
+}
