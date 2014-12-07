@@ -90,16 +90,16 @@ Usage
 // as a mixin
 _.mixin({date: dateHelper});
 _.template('<%= _.date("5 years ago", "YYYY") %>', {});
-//=> 'AAA\nBBB\nCCC'
+//=> 2010
 
 // passed on the context
 _.template('<%= date("5 years ago", "YYYY") %>', {date: dateHelper});
-//=> 'AAA\nBBB\nCCC'
+//=> 2010
 
 // as an import
 var settings = {imports: {date: dateHelper}};
 _.template('<%= date("5 years ago", "YYYY") %>', {}, settings);
-//=> 'AAA\nBBB\nCCC'
+//=> 2010
 ```
 
 ## Contributing
