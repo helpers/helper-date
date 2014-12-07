@@ -37,21 +37,23 @@ describe('moment', function () {
   });
 
   it('should work as a lodash helper:', function () {
-    var ctx = {imports: {moment: moment, date: date}};
-
-    _.template('<%= moment("MMMM DD, YYYY") %>', {}, ctx).should.eql(moment("MMMM DD, YYYY"));
-    _.template('<%= moment("MMMM DD, YYYY") %>', {}, ctx).should.eql(moment("MMMM DD, YYYY"));
-    _.template('<%= moment("MMMM DD, YYYY") %>', {}, ctx).should.eql(momentjs().format("MMMM DD, YYYY"));
+    var locals = {imports: {moment: moment, date: date}};
+    _.template('<%= moment(date("5 years ago"), "YYYY") %>', {}, locals).should.eql((moment("YYYY") - 5).toString());
+    _.template('<%= moment("5 years ago", "YYYY") %>', {}, locals).should.eql((moment("YYYY") - 5).toString());
+    _.template('<%= moment("MMMM DD, YYYY") %>', {}, locals).should.eql(moment("MMMM DD, YYYY"));
+    _.template('<%= moment("MMMM DD, YYYY") %>', {}, locals).should.eql(momentjs().format("MMMM DD, YYYY"));
     _.template('<%= moment("YYYY") %>', {}, {imports: {moment: moment}}).should.eql(new Date().getFullYear().toString());
   });
 
   it('should work as a handlebars helper:', function () {
-    handlebars.registerHelper('moment', moment);
+    handlebars.registerHelper('date', moment);
+    var locals = {formatDate: "MMMM DD, YYYY", time: new Date()};
 
-    handlebars.compile('{{moment date "MMMM DD, YYYY"}}')().should.eql(moment("MMMM DD, YYYY"));
-    handlebars.compile('{{moment date "MMMM DD, YYYY"}}')({date: new Date()}).should.eql(momentjs().format("MMMM DD, YYYY"));
-    handlebars.compile('{{moment date formatDate}}')({formatDate: "MMMM DD, YYYY", date: new Date()}).should.eql(momentjs().format("MMMM DD, YYYY"));
-    handlebars.compile('{{moment date formatDate}}')({formatDate: "MMMM DD, YYYY"}).should.eql(moment("MMMM DD, YYYY"));
+    handlebars.compile('{{date "5 years ago" "YYYY"}}')().should.eql((moment("YYYY") - 5).toString());
+    handlebars.compile('{{date time "MMMM DD, YYYY"}}')().should.eql(moment("MMMM DD, YYYY"));
+    handlebars.compile('{{date time "MMMM DD, YYYY"}}')({time: new Date()}).should.eql(momentjs().format("MMMM DD, YYYY"));
+    handlebars.compile('{{date time formatDate}}')(locals).should.eql(momentjs().format("MMMM DD, YYYY"));
+    handlebars.compile('{{date time formatDate}}')(locals).should.eql(moment("MMMM DD, YYYY"));
   });
 });
 

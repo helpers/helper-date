@@ -33,6 +33,7 @@ module.exports = function momentHelper(str, pattern, options) {
     return moment(date(str)).format(pattern);
   }
 
+  // If handlebars, expose moment methods as hash properties
   if (opts.hash) {
     if (opts.context) {
       extend(opts.hash, opts.context);
@@ -47,7 +48,6 @@ module.exports = function momentHelper(str, pattern, options) {
       }
     }
   }
-
 
   if (typeOf(str) === 'object') {
     return moment(str).format(pattern);
