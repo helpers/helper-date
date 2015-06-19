@@ -1,12 +1,13 @@
 /*!
  * helper-date <https://github.com/jonschlinkert/helper-date>
  *
- * Copyright (c) 2014 Jon Schlinkert, contributors.
+ * Copyright (c) 2014-2015 Jon Schlinkert.
  * Licensed under the MIT License
  */
 
 'use strict';
 
+/* deps: mocha */
 var should = require('should');
 var handlebars = require('handlebars');
 var momentjs = require('moment');
@@ -21,6 +22,7 @@ describe('moment', function () {
   });
 
   it('should return a formatted moment date:', function () {
+    moment('YYYY').should.eql(momentjs().format('YYYY'));
     moment('MMMM DD, YYYY').should.eql(momentjs().format('MMMM DD, YYYY'));
   });
 
@@ -38,11 +40,11 @@ describe('moment', function () {
 
   it('should work as a lodash helper:', function () {
     var locals = {imports: {moment: moment, date: date}};
-    _.template('<%= moment(date("5 years ago"), "YYYY") %>', {}, locals).should.eql((moment("YYYY") - 5).toString());
-    _.template('<%= moment("5 years ago", "YYYY") %>', {}, locals).should.eql((moment("YYYY") - 5).toString());
-    _.template('<%= moment("MMMM DD, YYYY") %>', {}, locals).should.eql(moment("MMMM DD, YYYY"));
-    _.template('<%= moment("MMMM DD, YYYY") %>', {}, locals).should.eql(momentjs().format("MMMM DD, YYYY"));
-    _.template('<%= moment("YYYY") %>', {}, {imports: {moment: moment}}).should.eql(new Date().getFullYear().toString());
+    _.template('<%= moment(date("5 years ago"), "YYYY") %>', locals)().should.eql((moment("YYYY") - 5).toString());
+    _.template('<%= moment("5 years ago", "YYYY") %>', locals)().should.eql((moment("YYYY") - 5).toString());
+    _.template('<%= moment("MMMM DD, YYYY") %>', locals)().should.eql(moment("MMMM DD, YYYY"));
+    _.template('<%= moment("MMMM DD, YYYY") %>', locals)().should.eql(momentjs().format("MMMM DD, YYYY"));
+    _.template('<%= moment("YYYY") %>', locals)().should.eql(new Date().getFullYear().toString());
   });
 
   it('should work as a handlebars helper:', function () {
