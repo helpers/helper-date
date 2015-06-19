@@ -1,7 +1,7 @@
 {
   "name": "helper-date",
   "description": "Format dates with date.js and moment.js. Uses date.js to parse human readable date phrases, and moment to format the rendered output. Should work with any Handlebars, Lo-Dash, underscore, or any template engine that allows helper functions to be registered. Also compatible with verb, assemble and Template.",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "homepage": "https://github.com/helpers/helper-date",
   "author": {
     "name": "Jon Schlinkert",
@@ -14,28 +14,28 @@
   "bugs": {
     "url": "https://github.com/helpers/helper-date/issues"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/helpers/helper-date/blob/master/LICENSE-MIT"
-  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
   "main": "index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   },
   "dependencies": {
     "date.js": "^0.2.0",
-    "extend-shallow": "^0.2.0",
-    "kind-of": "^0.1.2",
-    "moment": "^2.8.4"
+    "extend-shallow": "^1.1.4",
+    "kind-of": "^2.0.0",
+    "moment": "^2.10.3"
   },
   "devDependencies": {
-    "handlebars": "^2.0.0",
-    "lodash": "^2.4.1",
-    "should": "*",
-    "mocha": "*"
+    "handlebars": "^3.0.3",
+    "lodash": "^3.9.3",
+    "mocha": "^2.2.5",
+    "should": "^7.0.1"
   },
   "keywords": [
     "calendar",
