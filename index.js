@@ -1,24 +1,19 @@
 'use strict';
 
-/**
- * Module dependences
- */
-
-var typeOf = require('kind-of');
-var date = require('date.js');
+var utils = require('handlebars-utils');
 var moment = require('moment');
-var extend = require('extend-shallow');
+var date = require('date.js');
 
-module.exports = function momentHelper(str, pattern, options) {
+module.exports = function dateHelper(str, pattern, options) {
   // if no args are passed, return a formatted date
   if (str == null && pattern == null) {
     moment.locale('en');
     return moment().format('MMMM DD, YYYY');
   }
 
-  var opts = {lang: 'en', date: new Date()};
-  opts = extend({}, opts, str, pattern, options);
-  opts = extend({}, opts, opts.hash);
+  options = options || {};
+  var defaults = {lang: 'en', date: new Date()};
+  var opts = Object.assign({}, this, defaults, options, options.hash);
 
   // set the language to use
   moment.locale(opts.lang);
@@ -26,6 +21,7 @@ module.exports = function momentHelper(str, pattern, options) {
   if (opts.datejs === false) {
     return moment(new Date(str)).format(pattern);
   }
+
   // if both args are strings, this could apply to either lib.
   // so instead of doing magic we'll just ask the user to tell
   // us if the args should be passed to date.js or moment.
@@ -36,7 +32,7 @@ module.exports = function momentHelper(str, pattern, options) {
   // If handlebars, expose moment methods as hash properties
   if (opts.hash) {
     if (opts.context) {
-      extend(opts.hash, opts.context);
+      opts.hash = Object.assign({}, opts.hash, opts.context);
     }
 
     var res = moment(str);
@@ -49,7 +45,7 @@ module.exports = function momentHelper(str, pattern, options) {
     }
   }
 
-  if (typeOf(str) === 'object') {
+  if (utils.isObject(str)) {
     return moment(str).format(pattern);
   }
 
