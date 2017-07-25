@@ -13,7 +13,7 @@ module.exports = function dateHelper(str, pattern, options) {
 
   options = options || {};
   var defaults = {lang: 'en', date: new Date()};
-  var opts = Object.assign({}, this, defaults, options, options.hash);
+  var opts = Object.assign({}, this, defaults, pattern, options, options.hash);
 
   // set the language to use
   moment.locale(opts.lang);
