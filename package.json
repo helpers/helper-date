@@ -1,7 +1,7 @@
 {
   "name": "helper-date",
   "description": "Format dates with date.js and moment.js. Uses date.js to parse human readable date phrases, and moment to format the rendered output. Should work with any Handlebars, Lo-Dash, underscore, or any template engine that allows helper functions to be registered. Also compatible with verb, assemble and Template.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/helpers/helper-date",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
