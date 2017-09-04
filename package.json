@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "homepage": "https://github.com/helpers/helper-date",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "contributors": [
+    "Brad Taylor (https://www.linkedin.com/in/bradtaylorsf)",
+    "Jon Schlinkert (http://twitter.com/jonschlinkert)"
+  ],
   "repository": "helpers/helper-date",
   "bugs": {
     "url": "https://github.com/helpers/helper-date/issues"
@@ -21,14 +25,14 @@
   },
   "dependencies": {
     "date.js": "^0.3.1",
-    "handlebars-utils": "^1.0.1",
+    "handlebars-utils": "^1.0.4",
     "moment": "^2.18.1"
   },
   "devDependencies": {
     "gulp-format-md": "^1.0.0",
-    "mocha": "^3.4.2",
     "handlebars": "^4.0.10",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "mocha": "^3.5.0"
   },
   "keywords": [
     "calendar",
@@ -77,16 +81,16 @@
         "template-helpers"
       ]
     },
+    "lint": {
+      "reflinks": true
+    },
     "reflinks": [
       "assemble",
       "handlebars",
       "lodash",
       "template",
       "underscore",
-      "verb-generate-readme"
-    ],
-    "lint": {
-      "reflinks": true
-    }
+      "verb"
+    ]
   }
 }
